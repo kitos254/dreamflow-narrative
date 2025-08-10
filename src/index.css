@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Dreazie Dream Flow Design System
+Dreamy, cinematic, and beautifully crafted experience
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Dreamy palette */
+    --background: 320 40% 98%;
+    --foreground: 260 15% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card Colors */
+    --card: 320 30% 97%;
+    --card-foreground: 260 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover Colors */
+    --popover: 320 30% 97%;
+    --popover-foreground: 260 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Dreamy Lavender */
+    --primary: 270 50% 40%;
+    --primary-foreground: 320 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft Blush */
+    --secondary: 340 60% 90%;
+    --secondary-foreground: 260 15% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Colors */
+    --muted: 320 20% 92%;
+    --muted-foreground: 260 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Teal Touch */
+    --accent: 180 40% 85%;
+    --accent-foreground: 260 15% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 320 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders & Inputs */
+    --border: 320 20% 88%;
+    --input: 320 20% 88%;
+    --ring: 270 50% 40%;
 
-    --radius: 0.5rem;
+    /* Border Radius */
+    --radius: 1rem;
+
+    /* Dream Gradients */
+    --gradient-dream-primary: linear-gradient(135deg, hsl(270 60% 55%), hsl(340 70% 70%));
+    --gradient-dream-secondary: linear-gradient(135deg, hsl(180 50% 70%), hsl(45 80% 80%));
+    --gradient-dream-subtle: linear-gradient(180deg, hsl(320 40% 98%), hsl(320 30% 96%));
+    --gradient-dream-overlay: linear-gradient(180deg, hsl(260 15% 15% / 0), hsl(260 15% 15% / 0.7));
+
+    /* Dreamy Shadows */
+    --shadow-dream: 0 20px 40px -10px hsl(270 60% 55% / 0.2);
+    --shadow-dream-strong: 0 30px 60px -10px hsl(270 60% 55% / 0.3);
+    --shadow-glow: 0 0 30px hsl(270 60% 55% / 0.2);
+
+    /* Smooth Transitions */
+    --transition-dream: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-gentle: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +82,62 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Base Colors - Dark Dream Mode */
+    --background: 260 20% 8%;
+    --foreground: 320 40% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Card Colors */
+    --card: 260 20% 10%;
+    --card-foreground: 320 40% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Popover Colors */
+    --popover: 260 20% 10%;
+    --popover-foreground: 320 40% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary - Bright Lavender */
+    --primary: 270 70% 60%;
+    --primary-foreground: 260 20% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary - Dark Blush */
+    --secondary: 340 30% 15%;
+    --secondary-foreground: 320 40% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted Colors */
+    --muted: 260 15% 15%;
+    --muted-foreground: 320 20% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent - Dark Teal */
+    --accent: 180 30% 20%;
+    --accent-foreground: 320 40% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 320 40% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Borders & Inputs */
+    --border: 260 15% 20%;
+    --input: 260 15% 20%;
+    --ring: 270 70% 60%;
+
+    /* Dark Dream Gradients */
+    --gradient-dream-primary: linear-gradient(135deg, hsl(270 70% 50%), hsl(340 60% 50%));
+    --gradient-dream-secondary: linear-gradient(135deg, hsl(180 40% 40%), hsl(45 60% 50%));
+    --gradient-dream-subtle: linear-gradient(180deg, hsl(260 20% 8%), hsl(260 20% 10%));
+    --gradient-dream-overlay: linear-gradient(180deg, hsl(260 20% 8% / 0), hsl(260 20% 8% / 0.9));
+
+    /* Dark Dreamy Shadows */
+    --shadow-dream: 0 20px 40px -10px hsl(270 70% 30% / 0.3);
+    --shadow-dream-strong: 0 30px 60px -10px hsl(270 70% 30% / 0.4);
+    --shadow-glow: 0 0 30px hsl(270 70% 50% / 0.3);
+
+    --sidebar-background: 260 20% 8%;
+    --sidebar-foreground: 320 40% 95%;
+    --sidebar-primary: 270 70% 60%;
+    --sidebar-primary-foreground: 260 20% 8%;
+    --sidebar-accent: 260 15% 15%;
+    --sidebar-accent-foreground: 320 40% 95%;
+    --sidebar-border: 260 15% 20%;
+    --sidebar-ring: 270 70% 60%;
   }
 }
 
@@ -100,6 +147,65 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Dream Flow Utilities */
+  .dream-gradient-primary {
+    background: var(--gradient-dream-primary);
+  }
+  
+  .dream-gradient-secondary {
+    background: var(--gradient-dream-secondary);
+  }
+  
+  .dream-gradient-subtle {
+    background: var(--gradient-dream-subtle);
+  }
+  
+  .dream-shadow {
+    box-shadow: var(--shadow-dream);
+  }
+  
+  .dream-shadow-strong {
+    box-shadow: var(--shadow-dream-strong);
+  }
+  
+  .dream-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-dream {
+    transition: var(--transition-dream);
+  }
+  
+  .transition-gentle {
+    transition: var(--transition-gentle);
+  }
+  
+  /* Profile Card Blur Effect */
+  .profile-blur-in {
+    filter: blur(20px);
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  
+  .profile-blur-out {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+  
+  /* Parallax Background */
+  .parallax-bg {
+    transform: translateY(var(--parallax-offset, 0px));
+    transition: transform 0.1s ease-out;
   }
 }

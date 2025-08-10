@@ -1,0 +1,146 @@
+import { useState, useEffect } from "react";
+import { ProfileCard } from "@/components/ui/profile-card";
+import { DreamMoment } from "@/components/ui/dream-moment";
+import profile1 from "@/assets/profile-1.jpg";
+import profile2 from "@/assets/profile-2.jpg";
+import profile3 from "@/assets/profile-3.jpg";
+
+interface Profile {
+  id: string;
+  name: string;
+  age: number;
+  location: string;
+  mood: string;
+  backgroundImage: string;
+  quote?: string;
+  audioQuote?: string;
+  dreamFacts: string[];
+  isVisible: boolean;
+}
+
+const dreamProfiles: Profile[] = [
+  {
+    id: "1",
+    name: "Luna",
+    age: 25,
+    location: "San Francisco",
+    mood: "Artistic Soul",
+    backgroundImage: profile1,
+    quote: "I believe in magic moments and midnight conversations under the stars",
+    dreamFacts: [
+      "🎨 Paints landscapes at sunrise",
+      "☕ Coffee shop philosopher", 
+      "🌙 Night owl who loves astronomy",
+      "📚 Collects vintage poetry books"
+    ],
+    isVisible: false
+  },
+  {
+    id: "2",
+    name: "Atlas",
+    age: 28,
+    location: "Brooklyn",
+    mood: "Adventure Seeker",
+    backgroundImage: profile2,
+    quote: "Life's too short for small talk - let's dive into the deep end together",
+    dreamFacts: [
+      "🏔️ Climbed mountains on 3 continents",
+      "🎵 Plays guitar by campfires",
+      "🌅 Chases sunrises around the world",
+      "📖 Writes travel journals"
+    ],
+    isVisible: false
+  },
+  {
+    id: "3",
+    name: "Sage",
+    age: 26,
+    location: "Portland",
+    mood: "Cozy Dreamer",
+    backgroundImage: profile3,
+    quote: "I find magic in quiet moments and deep conversations over tea",
+    dreamFacts: [
+      "📚 Reads 100+ books a year",
+      "🍃 Grows herbs and makes tea blends",
+      "🧶 Knits scarves for friends",
+      "🎭 Performs in local theater"
+    ],
+    isVisible: false
+  }
+];
+
+export const DreamFlow = () => {
+  const [profiles, setProfiles] = useState(dreamProfiles);
+  const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const cardId = entry.target.getAttribute('data-card-id');
+          if (cardId) {
+            if (entry.isIntersecting) {
+              setVisibleCards(prev => new Set(prev).add(cardId));
+            } else {
+              setVisibleCards(prev => {
+                const newSet = new Set(prev);
+                newSet.delete(cardId);
+                return newSet;
+              });
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.3,
+        rootMargin: '0px 0px -20% 0px'
+      }
+    );
+
+    // Observe all profile cards
+    const cardElements = document.querySelectorAll('[data-card-id]');
+    cardElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Update profile visibility based on intersection
+  useEffect(() => {
+    setProfiles(prev => 
+      prev.map(profile => ({
+        ...profile,
+        isVisible: visibleCards.has(profile.id)
+      }))
+    );
+  }, [visibleCards]);
+
+  return (
+    <div className="dream-flow-container">
+      {/* Profile 1 */}
+      <div data-card-id="1">
+        <ProfileCard profile={profiles[0]} />
+      </div>
+
+      {/* Profile 2 */}
+      <div data-card-id="2">
+        <ProfileCard profile={profiles[1]} />
+      </div>
+
+      {/* Dream Moment */}
+      <div data-card-id="dream-moment">
+        <DreamMoment 
+          question="Do you believe in love at first conversation?"
+          isVisible={visibleCards.has('dream-moment')}
+        />
+      </div>
+
+      {/* Profile 3 */}
+      <div data-card-id="3">
+        <ProfileCard profile={profiles[2]} />
+      </div>
+
+      {/* Add some bottom padding for the navigation */}
+      <div className="h-24" />
+    </div>
+  );
+};

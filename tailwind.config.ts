@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -70,25 +74,57 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'dream-float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'dream-fade-in': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(60px) scale(0.95)',
+						filter: 'blur(20px)'
 					},
-					to: {
-						height: '0'
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0px) scale(1)',
+						filter: 'blur(0px)'
+					}
+				},
+				'dream-fade-out': {
+					'0%': { 
+						opacity: '1', 
+						transform: 'translateY(0px) scale(1)',
+						filter: 'blur(0px)'
+					},
+					'100%': { 
+						opacity: '0', 
+						transform: 'translateY(-60px) scale(0.95)',
+						filter: 'blur(20px)'
+					}
+				},
+				'dream-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px hsl(270 60% 55% / 0.1)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 40px hsl(270 60% 55% / 0.3)' 
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'dream-float': 'dream-float 6s ease-in-out infinite',
+				'dream-fade-in': 'dream-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+				'dream-fade-out': 'dream-fade-out 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+				'dream-glow': 'dream-glow 4s ease-in-out infinite'
 			}
 		}
 	},
