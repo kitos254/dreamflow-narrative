@@ -4,6 +4,8 @@ import { DreamMoment } from "@/components/ui/dream-moment";
 import profile1 from "@/assets/profile-1.jpg";
 import profile2 from "@/assets/profile-2.jpg";
 import profile3 from "@/assets/profile-3.jpg";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, Infinity, User as UserIcon } from "lucide-react";
 
 interface Profile {
   id: string;
@@ -153,6 +155,28 @@ export const DreamFlow = () => {
 
       {focusedProfile && (
         <div className="fixed inset-0 z-50 animate-fade-in" onClick={() => setFocusedProfileId(null)}>
+          {/* Top action bar */}
+          <div
+            className="absolute top-0 left-0 right-0 p-4 md:p-6 flex justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+              <Button size="sm" variant="default" className="font-inter font-medium">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Send Message
+              </Button>
+              <Button size="sm" variant="outline" className="font-inter font-medium">
+                <Infinity className="mr-2 h-4 w-4" />
+                Start a Loop
+              </Button>
+              <Button size="sm" variant="secondary" className="font-inter font-medium">
+                <UserIcon className="mr-2 h-4 w-4" />
+                Profile
+              </Button>
+            </div>
+          </div>
+
+          {/* Fullscreen image */}
           <img
             src={focusedProfile.backgroundImage}
             alt={`${focusedProfile.name} profile image`}
