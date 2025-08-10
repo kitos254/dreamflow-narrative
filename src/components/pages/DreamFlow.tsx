@@ -147,7 +147,7 @@ export const DreamFlow = () => {
               </div>
             </div>
           )}
-          <ProfileCard profile={profiles[0]} />
+          <ProfileCard profile={profiles[0]} className={focusedProfileId === profiles[0].id ? 'details-hidden' : ''} />
         </div>
 
         {/* Profile 2 */}
@@ -171,7 +171,7 @@ export const DreamFlow = () => {
               </div>
             </div>
           )}
-          <ProfileCard profile={profiles[1]} />
+          <ProfileCard profile={profiles[1]} className={focusedProfileId === profiles[1].id ? 'details-hidden' : ''} />
         </div>
 
         {/* Dream Moment */}
@@ -203,7 +203,7 @@ export const DreamFlow = () => {
               </div>
             </div>
           )}
-          <ProfileCard profile={profiles[2]} />
+          <ProfileCard profile={profiles[2]} className={focusedProfileId === profiles[2].id ? 'details-hidden' : ''} />
         </div>
 
         {/* Add some bottom padding for the navigation */}

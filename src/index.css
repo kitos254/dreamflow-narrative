@@ -214,4 +214,13 @@ All colors MUST be HSL.
     transform: translateY(var(--parallax-offset, 0px));
     transition: transform 0.1s ease-out;
   }
+
+  /* Hide details and overlays on focused profile */
+  .details-hidden > div:nth-child(2),
+  .details-hidden > div:nth-child(3) {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: var(--transition-gentle);
+  }
 }
