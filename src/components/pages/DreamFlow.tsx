@@ -4,6 +4,7 @@ import { DreamMoment } from "@/components/ui/dream-moment";
 import profile1 from "@/assets/profile-1.jpg";
 import profile2 from "@/assets/profile-2.jpg";
 import profile3 from "@/assets/profile-3.jpg";
+import { useNavigate } from "react-router-dom";
 
 interface Profile {
   id: string;
@@ -72,6 +73,11 @@ const dreamProfiles: Profile[] = [
 export const DreamFlow = () => {
   const [profiles, setProfiles] = useState(dreamProfiles);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
+  const navigate = useNavigate();
+
+  const openProfile = (p: Profile) => {
+    navigate("/profile", { state: { image: p.backgroundImage, name: p.name, id: p.id } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,12 +123,12 @@ export const DreamFlow = () => {
   return (
     <div className="dream-flow-container">
       {/* Profile 1 */}
-      <div data-card-id="1">
+      <div data-card-id="1" onClick={() => openProfile(profiles[0])} className="cursor-pointer">
         <ProfileCard profile={profiles[0]} />
       </div>
 
       {/* Profile 2 */}
-      <div data-card-id="2">
+      <div data-card-id="2" onClick={() => openProfile(profiles[1])} className="cursor-pointer">
         <ProfileCard profile={profiles[1]} />
       </div>
 
@@ -135,7 +141,7 @@ export const DreamFlow = () => {
       </div>
 
       {/* Profile 3 */}
-      <div data-card-id="3">
+      <div data-card-id="3" onClick={() => openProfile(profiles[2])} className="cursor-pointer">
         <ProfileCard profile={profiles[2]} />
       </div>
 
