@@ -125,32 +125,48 @@ export const DreamFlow = () => {
 
   return (
     <>
-      {/* Global top action bar */}
-      <div className="pointer-events-none fixed top-0 left-0 right-0 z-40 flex justify-center p-4 md:p-6">
-        <div className="pointer-events-auto flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
-          <Button size="sm" variant="default" className="font-inter font-medium">
-            <MessageCircle className="mr-2 h-4 w-4" />
-            Send Message
-          </Button>
-          <Button size="sm" variant="outline" className="font-inter font-medium">
-            <Infinity className="mr-2 h-4 w-4" />
-            Start a Loop
-          </Button>
-          <Button size="sm" variant="secondary" className="font-inter font-medium">
-            <UserIcon className="mr-2 h-4 w-4" />
-            Profile
-          </Button>
-        </div>
-      </div>
-
       <div className={`dream-flow-container transition-opacity duration-300 ${focusedProfile ? 'opacity-0' : 'opacity-100'}`}>
         {/* Profile 1 */}
-        <div data-card-id="1" onClick={() => toggleFocus(profiles[0])} className="cursor-pointer">
+        <div data-card-id="1" onClick={() => toggleFocus(profiles[0])} className="relative cursor-pointer">
+          {/* Card-level action bar */}
+          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+              <Button size="sm" variant="default" className="font-inter font-medium">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Send Message
+              </Button>
+              <Button size="sm" variant="outline" className="font-inter font-medium">
+                <Infinity className="mr-2 h-4 w-4" />
+                Start a Loop
+              </Button>
+              <Button size="sm" variant="secondary" className="font-inter font-medium">
+                <UserIcon className="mr-2 h-4 w-4" />
+                Profile
+              </Button>
+            </div>
+          </div>
           <ProfileCard profile={profiles[0]} />
         </div>
 
         {/* Profile 2 */}
-        <div data-card-id="2" onClick={() => toggleFocus(profiles[1])} className="cursor-pointer">
+        <div data-card-id="2" onClick={() => toggleFocus(profiles[1])} className="relative cursor-pointer">
+          {/* Card-level action bar */}
+          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+              <Button size="sm" variant="default" className="font-inter font-medium">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Send Message
+              </Button>
+              <Button size="sm" variant="outline" className="font-inter font-medium">
+                <Infinity className="mr-2 h-4 w-4" />
+                Start a Loop
+              </Button>
+              <Button size="sm" variant="secondary" className="font-inter font-medium">
+                <UserIcon className="mr-2 h-4 w-4" />
+                Profile
+              </Button>
+            </div>
+          </div>
           <ProfileCard profile={profiles[1]} />
         </div>
 
@@ -163,7 +179,24 @@ export const DreamFlow = () => {
         </div>
 
         {/* Profile 3 */}
-        <div data-card-id="3" onClick={() => toggleFocus(profiles[2])} className="cursor-pointer">
+        <div data-card-id="3" onClick={() => toggleFocus(profiles[2])} className="relative cursor-pointer">
+          {/* Card-level action bar */}
+          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+              <Button size="sm" variant="default" className="font-inter font-medium">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Send Message
+              </Button>
+              <Button size="sm" variant="outline" className="font-inter font-medium">
+                <Infinity className="mr-2 h-4 w-4" />
+                Start a Loop
+              </Button>
+              <Button size="sm" variant="secondary" className="font-inter font-medium">
+                <UserIcon className="mr-2 h-4 w-4" />
+                Profile
+              </Button>
+            </div>
+          </div>
           <ProfileCard profile={profiles[2]} />
         </div>
 
