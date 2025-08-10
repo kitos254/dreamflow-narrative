@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { MapPin, Heart, MessageCircle, Play, Pause } from "lucide-react";
-import { Button } from "./button";
+import { MapPin, Play, Pause } from "lucide-react";
+
 
 interface ProfileCardProps {
   profile: {
@@ -139,22 +139,6 @@ export const ProfileCard = ({ profile, className }: ProfileCardProps) => {
           </div>
         </div>
 
-        {/* Section 4: Action Buttons */}
-        <div className={cn(
-          "transition-dream duration-700 delay-600",
-          currentSection >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        )}>
-          <div className="flex gap-4">
-            <Button variant="default" size="lg" className="flex-1 dream-gradient-primary border-0 text-primary-foreground font-inter font-medium">
-              <Heart className="w-5 h-5 mr-2" />
-              Send a Note
-            </Button>
-            <Button variant="outline" size="lg" className="flex-1 bg-card/60 backdrop-blur-xl border-primary/30 text-primary hover:bg-primary/10">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Start a Loop
-            </Button>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -125,6 +125,24 @@ export const DreamFlow = () => {
 
   return (
     <>
+      {/* Global top action bar */}
+      <div className="pointer-events-none fixed top-0 left-0 right-0 z-40 flex justify-center p-4 md:p-6">
+        <div className="pointer-events-auto flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+          <Button size="sm" variant="default" className="font-inter font-medium">
+            <MessageCircle className="mr-2 h-4 w-4" />
+            Send Message
+          </Button>
+          <Button size="sm" variant="outline" className="font-inter font-medium">
+            <Infinity className="mr-2 h-4 w-4" />
+            Start a Loop
+          </Button>
+          <Button size="sm" variant="secondary" className="font-inter font-medium">
+            <UserIcon className="mr-2 h-4 w-4" />
+            Profile
+          </Button>
+        </div>
+      </div>
+
       <div className={`dream-flow-container transition-opacity duration-300 ${focusedProfile ? 'opacity-0' : 'opacity-100'}`}>
         {/* Profile 1 */}
         <div data-card-id="1" onClick={() => toggleFocus(profiles[0])} className="cursor-pointer">
