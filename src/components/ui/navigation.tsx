@@ -16,7 +16,7 @@ const navigationItems = [
 
 export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-xl border-t border-border">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-xl border-t border-border lg:hidden">
       <div className="flex items-center justify-around py-2 px-4 max-w-md mx-auto">
         {navigationItems.map(({ id, icon: Icon, label }) => (
           <button

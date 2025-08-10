@@ -5,6 +5,8 @@ import { DreamLoops } from "@/components/pages/DreamLoops";
 import { DreamEvents } from "@/components/pages/DreamEvents";
 import { DreamMessages } from "@/components/pages/DreamMessages";
 import { DreamCapsule } from "@/components/pages/DreamCapsule";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dream-flow');
@@ -27,10 +29,23 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {renderActiveTab()}
-      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
-    </div>
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full">
+        <div className="hidden lg:block">
+          <AppSidebar activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
+        <main className="flex-1">
+          <header className="hidden lg:flex h-14 items-center border-b px-3">
+            <SidebarTrigger className="mr-2" />
+            <h1 className="text-base font-playfair">Dreazie</h1>
+          </header>
+          {renderActiveTab()}
+          <div className="lg:hidden">
+            <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+          </div>
+        </main>
+      </div>
+    </SidebarProvider>
   );
 };
 
