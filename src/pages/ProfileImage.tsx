@@ -14,6 +14,11 @@ const ProfileImage = () => {
   const image = state.image;
   const name = state.name || "Profile";
 
+  const handleClick = () => {
+    if (window.history.length > 1) navigate(-1);
+    else navigate("/", { replace: true });
+  };
+
   useEffect(() => {
     document.title = `${name} Image • Dreazie`;
     const meta = document.querySelector('meta[name="description"]');
@@ -36,7 +41,7 @@ const ProfileImage = () => {
   if (!image) return null;
 
   return (
-    <main className="min-h-screen w-full">
+    <main className="min-h-screen w-full" onClick={handleClick}>
       <h1 className="sr-only">Profile Image</h1>
       <img
         src={image}
