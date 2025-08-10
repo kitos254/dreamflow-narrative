@@ -4,7 +4,6 @@ import { DreamMoment } from "@/components/ui/dream-moment";
 import profile1 from "@/assets/profile-1.jpg";
 import profile2 from "@/assets/profile-2.jpg";
 import profile3 from "@/assets/profile-3.jpg";
-import { useNavigate } from "react-router-dom";
 
 interface Profile {
   id: string;
@@ -73,10 +72,10 @@ const dreamProfiles: Profile[] = [
 export const DreamFlow = () => {
   const [profiles, setProfiles] = useState(dreamProfiles);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
-  const navigate = useNavigate();
+  const [focusedProfileId, setFocusedProfileId] = useState<string | null>(null);
 
-  const openProfile = (p: Profile) => {
-    navigate("/profile", { state: { image: p.backgroundImage, name: p.name, id: p.id } });
+  const toggleFocus = (p: Profile) => {
+    setFocusedProfileId((prev) => (prev === p.id ? null : p.id));
   };
 
   useEffect(() => {
@@ -120,33 +119,49 @@ export const DreamFlow = () => {
     );
   }, [visibleCards]);
 
+  const focusedProfile = focusedProfileId ? profiles.find((p) => p.id === focusedProfileId) : undefined;
+
   return (
-    <div className="dream-flow-container">
-      {/* Profile 1 */}
-      <div data-card-id="1" onClick={() => openProfile(profiles[0])} className="cursor-pointer">
-        <ProfileCard profile={profiles[0]} />
+    <>
+      <div className={`dream-flow-container transition-opacity duration-300 ${focusedProfile ? 'opacity-0' : 'opacity-100'}`}>
+        {/* Profile 1 */}
+        <div data-card-id="1" onClick={() => toggleFocus(profiles[0])} className="cursor-pointer">
+          <ProfileCard profile={profiles[0]} />
+        </div>
+
+        {/* Profile 2 */}
+        <div data-card-id="2" onClick={() => toggleFocus(profiles[1])} className="cursor-pointer">
+          <ProfileCard profile={profiles[1]} />
+        </div>
+
+        {/* Dream Moment */}
+        <div data-card-id="dream-moment">
+          <DreamMoment 
+            question="Do you believe in love at first conversation?"
+            isVisible={visibleCards.has('dream-moment')}
+          />
+        </div>
+
+        {/* Profile 3 */}
+        <div data-card-id="3" onClick={() => toggleFocus(profiles[2])} className="cursor-pointer">
+          <ProfileCard profile={profiles[2]} />
+        </div>
+
+        {/* Add some bottom padding for the navigation */}
+        <div className="h-24" />
       </div>
 
-      {/* Profile 2 */}
-      <div data-card-id="2" onClick={() => openProfile(profiles[1])} className="cursor-pointer">
-        <ProfileCard profile={profiles[1]} />
-      </div>
-
-      {/* Dream Moment */}
-      <div data-card-id="dream-moment">
-        <DreamMoment 
-          question="Do you believe in love at first conversation?"
-          isVisible={visibleCards.has('dream-moment')}
-        />
-      </div>
-
-      {/* Profile 3 */}
-      <div data-card-id="3" onClick={() => openProfile(profiles[2])} className="cursor-pointer">
-        <ProfileCard profile={profiles[2]} />
-      </div>
-
-      {/* Add some bottom padding for the navigation */}
-      <div className="h-24" />
-    </div>
+      {focusedProfile && (
+        <div className="fixed inset-0 z-50 animate-fade-in" onClick={() => setFocusedProfileId(null)}>
+          <img
+            src={focusedProfile.backgroundImage}
+            alt={`${focusedProfile.name} profile image`}
+            className="h-screen w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </div>
+      )}
+    </>
   );
 };
