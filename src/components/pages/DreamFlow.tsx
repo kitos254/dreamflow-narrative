@@ -125,48 +125,52 @@ export const DreamFlow = () => {
 
   return (
     <>
-      <div className={`dream-flow-container transition-opacity duration-300 ${focusedProfile ? 'opacity-0' : 'opacity-100'}`}>
+      <div className="dream-flow-container">
         {/* Profile 1 */}
         <div data-card-id="1" onClick={() => toggleFocus(profiles[0])} className="relative cursor-pointer">
           {/* Card-level action bar */}
-          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
-              <Button size="sm" variant="default" className="font-inter font-medium">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Send Message
-              </Button>
-              <Button size="sm" variant="outline" className="font-inter font-medium">
-                <Infinity className="mr-2 h-4 w-4" />
-                Start a Loop
-              </Button>
-              <Button size="sm" variant="secondary" className="font-inter font-medium">
-                <UserIcon className="mr-2 h-4 w-4" />
-                Profile
-              </Button>
+          {focusedProfileId !== profiles[0].id && (
+            <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+                <Button size="sm" variant="default" className="font-inter font-medium">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Send Message
+                </Button>
+                <Button size="sm" variant="outline" className="font-inter font-medium">
+                  <Infinity className="mr-2 h-4 w-4" />
+                  Start a Loop
+                </Button>
+                <Button size="sm" variant="secondary" className="font-inter font-medium">
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  Profile
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
           <ProfileCard profile={profiles[0]} />
         </div>
 
         {/* Profile 2 */}
         <div data-card-id="2" onClick={() => toggleFocus(profiles[1])} className="relative cursor-pointer">
           {/* Card-level action bar */}
-          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
-              <Button size="sm" variant="default" className="font-inter font-medium">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Send Message
-              </Button>
-              <Button size="sm" variant="outline" className="font-inter font-medium">
-                <Infinity className="mr-2 h-4 w-4" />
-                Start a Loop
-              </Button>
-              <Button size="sm" variant="secondary" className="font-inter font-medium">
-                <UserIcon className="mr-2 h-4 w-4" />
-                Profile
-              </Button>
+          {focusedProfileId !== profiles[1].id && (
+            <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+                <Button size="sm" variant="default" className="font-inter font-medium">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Send Message
+                </Button>
+                <Button size="sm" variant="outline" className="font-inter font-medium">
+                  <Infinity className="mr-2 h-4 w-4" />
+                  Start a Loop
+                </Button>
+                <Button size="sm" variant="secondary" className="font-inter font-medium">
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  Profile
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
           <ProfileCard profile={profiles[1]} />
         </div>
 
@@ -181,22 +185,24 @@ export const DreamFlow = () => {
         {/* Profile 3 */}
         <div data-card-id="3" onClick={() => toggleFocus(profiles[2])} className="relative cursor-pointer">
           {/* Card-level action bar */}
-          <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
-              <Button size="sm" variant="default" className="font-inter font-medium">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Send Message
-              </Button>
-              <Button size="sm" variant="outline" className="font-inter font-medium">
-                <Infinity className="mr-2 h-4 w-4" />
-                Start a Loop
-              </Button>
-              <Button size="sm" variant="secondary" className="font-inter font-medium">
-                <UserIcon className="mr-2 h-4 w-4" />
-                Profile
-              </Button>
+          {focusedProfileId !== profiles[2].id && (
+            <div className="absolute top-4 left-0 right-0 flex justify-center z-10" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
+                <Button size="sm" variant="default" className="font-inter font-medium">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Send Message
+                </Button>
+                <Button size="sm" variant="outline" className="font-inter font-medium">
+                  <Infinity className="mr-2 h-4 w-4" />
+                  Start a Loop
+                </Button>
+                <Button size="sm" variant="secondary" className="font-inter font-medium">
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  Profile
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
           <ProfileCard profile={profiles[2]} />
         </div>
 
@@ -204,39 +210,6 @@ export const DreamFlow = () => {
         <div className="h-24" />
       </div>
 
-      {focusedProfile && (
-        <div className="fixed inset-0 z-50 animate-fade-in" onClick={() => setFocusedProfileId(null)}>
-          {/* Top action bar */}
-          <div
-            className="absolute top-0 left-0 right-0 p-4 md:p-6 flex justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center gap-2 md:gap-3 bg-background/70 backdrop-blur-xl rounded-full px-3 py-2 border border-border/50 shadow-sm">
-              <Button size="sm" variant="default" className="font-inter font-medium">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Send Message
-              </Button>
-              <Button size="sm" variant="outline" className="font-inter font-medium">
-                <Infinity className="mr-2 h-4 w-4" />
-                Start a Loop
-              </Button>
-              <Button size="sm" variant="secondary" className="font-inter font-medium">
-                <UserIcon className="mr-2 h-4 w-4" />
-                Profile
-              </Button>
-            </div>
-          </div>
-
-          {/* Fullscreen image */}
-          <img
-            src={focusedProfile.backgroundImage}
-            alt={`${focusedProfile.name} profile image`}
-            className="h-screen w-full object-cover"
-            loading="eager"
-            fetchPriority="high"
-          />
-        </div>
-      )}
     </>
   );
 };
