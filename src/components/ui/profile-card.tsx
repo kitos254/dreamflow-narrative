@@ -52,9 +52,6 @@ export const ProfileCard = ({ profile, className }: ProfileCardProps) => {
       ref={cardRef}
       className={cn(
         "relative h-screen w-full overflow-hidden transition-dream",
-        profile.isVisible 
-          ? "profile-blur-out" 
-          : "profile-blur-in",
         className
       )}
     >
